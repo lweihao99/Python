@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title> 
+    </head>
+    <body>
+        <form action="{{ url_for('result')}}" method="POST"> <!--action 要提交的动作就是要访问的页面, method 进行搜索和登录的时候用POST加密-->
+            <!--{{ url_for('result()')}}是动态的生成一个路径-->
+            <p>姓名:<input type = "text" name = "姓名"></p> <!--input 文本框，<p></p>是段落-->
+            <p>年龄:<input type = "text" name = "年龄"></p>
+            <p>性别:<input type = "text" name = "性别"></p>
+            <p>地址:<input type = "text" name = "地址"></p>
+            <p><input type="submit" value="提交" ></p> <!--设置一个提交按钮-->
+
+        </form>
+    </body>
+</html>

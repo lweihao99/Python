@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello</title>
+    </head>
+    <body>
+        
+        <table border="1"> <!--border 是加框-->
+            {% for key,value in task.items() %} <!--items迭代器，通过这种方式能够直接将字典拿出来，字典成了这样子:[(key,value),(key,value),(key,value)]-->
+            <tr> <!-- 一行 = tr -->
+                <th>{{key}}</th> <!-- th = 标题 -->
+                <td>{{value}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

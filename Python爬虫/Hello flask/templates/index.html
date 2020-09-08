@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+</head>
+<body>
+    今天是{{var}},欢迎光临。<br/> <!-- {{}} 是服务器端传过来的东西,用来访问一般变量, <br/> 是换行 -->
+    今天值班的有:<br/>
+    {% for data in list %} <!--用大括号和百分号括起来的是控制结构，控制下面html渲染什么，还可以有if-->
+    <li>{{data}}</li>    
+    {% endfor %}
+
+    任务:<br/> <!--了解一下如何在页面打印表格,以及如何迭代 -->
+        <table border="1"> <!--border 是加框-->
+            {%for key,value in task.items() %} <!--items迭代器，通过这种方式能够直接将字典拿出来，字典成了这样子:[(key,value),(key,value),(key,value)]-->
+            <tr> <!-- 一行 = tr -->
+                <td>{{key}}</td> <!-- td = 一列 -->
+                <td>{{value}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+</body>
+</html>

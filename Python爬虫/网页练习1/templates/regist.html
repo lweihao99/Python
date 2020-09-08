@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Info Submit</title>
+</head>
+
+<body>
+    <form action="{{ url_for('/')}}" method="POST"></form>
+    今天是{{var}},{{time}}<br/>
+    今天要看的视频有:<br/>
+    {% for item in tvshow %} <!--开启循环-->
+    <li>{{item}}</li>
+    {% endfor %} <!--结束循环-->
+
+    时长有:<br/>
+    {% for i in duration %}
+    <li>{{i}}</li>
+    {% endfor %}
+
+    我喜欢的音乐有:<br/>
+    <table border="1"> <!--生成表单,border=加框-->
+    {% for kye,value in music.items() %}
+    <tr> <!--tr = 一行-->
+        <td> <!--tf = 一列-->
+            {{key}}
+        </td>
+        <td>
+            {{value}}
+        </td>
+    </tr>
+
+    {% endfor %}
+    </table>    
+</body>
+
+</html>

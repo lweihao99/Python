@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://www.cnblogs.com/saoqiang/p/12453738.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin">
+    <meta property="og:description" content="[TOC] 面向对象的结构与组成成员 类有两种属性：数据属性（静态等）和函数属性（方法 等） 成员有以下： 1、字段： 静态字段 普通字段 2、方法： 静态方法 类方法 普通方法 3、特性/属性 普通">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>python 面向对象练习 - 彭志强 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.ico?v=20200522" type="image/x-icon">
+    
+    <link rel="stylesheet" href="./python 面向对象练习 - 彭志强 - 博客园_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./python 面向对象练习 - 彭志强 - 博客园_files/bundle-custom.min.css">
+    <link type="text/css" rel="stylesheet" href="./python 面向对象练习 - 彭志强 - 博客园_files/custom.css">
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./python 面向对象练习 - 彭志强 - 博客园_files/bundle-custom-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/saoqiang/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/saoqiang/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/saoqiang/wlwmanifest.xml">
+    <script async="" src="./python 面向对象练习 - 彭志强 - 博客园_files/analytics.js.下载"></script><script>
+        var currentBlogId = 514821;
+        var currentBlogApp = 'saoqiang';
+        var cb_enable_mathjax = true;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'Custom';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2020-03-10 09:04';
+        </script>
+    <script src="./python 面向对象练习 - 彭志强 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script src="./python 面向对象练习 - 彭志强 - 博客园_files/blog-common.min.js.下载"></script>
+    <script type="text/x-mathjax-config;executed=true">
+        MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
+        TeX: {
+        equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
+        extensions: ['extpfeil.js', 'mediawiki-texvc.js'],
+        Macros: {bm: "\\boldsymbol"}
+        },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+    </script>
+    <script src="./python 面向对象练习 - 彭志强 - 博客园_files/MathJax.js.下载"></script>
+    
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script src="./python 面向对象练习 - 彭志强 - 博客园_files/pubads_impl_2020082001.js.下载" async=""></script><link rel="preload" href="./python 面向对象练习 - 彭志强 - 博客园_files/f.txt" as="script"><script type="text/javascript" src="./python 面向对象练习 - 彭志强 - 博客园_files/f.txt"></script><link rel="preload" href="./python 面向对象练习 - 彭志强 - 博客园_files/f(1).txt" as="script"><script type="text/javascript" src="./python 面向对象练习 - 彭志强 - 博客园_files/f(1).txt"></script><link rel="prefetch" href="https://9055c4344d21a503130f0b2ae130fe3a.safeframe.googlesyndication.com/safeframe/1-0-37/html/container.html"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-37/html/container.html"><link rel="shortcut icon" href="https://files.cnblogs.com/files/esofar/favicon.ico" type="image/x-icon"><link rel="stylesheet" href="./python 面向对象练习 - 彭志强 - 博客园_files/lightbox.min.css"></head>
+<body><div class="esa-mobile-menu"></div><div id="MathJax_Message" style="display: none;"></div>
+    <a name="top"></a>
+    
+    
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/saoqiang/"><img id="blogLogo" src="./python 面向对象练习 - 彭志强 - 博客园_files/logo.gif" alt="返回主页"></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/saoqiang/">学习笔记</a>
+</h1>
+<h2>
+
+</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+<i></i></li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/saoqiang/">
+首页</a>
+<i></i></li><li><a class="menu" href="https://www.cnblogs.com/saoqiang/tag/">标签</a><i></i></li><li><a class="menu" href="https://www.cnblogs.com/saoqiang/p/">归档</a><i></i></li>
+                            <li class="esa-has-subnavs">
+                                <a class="menu" href="javascript:void(0);">导航
+                                    <svg class="arrow" width="12px" height="8px" viewBox="0 0 14 8" xml:space="preserve" fill="none" stroke="rgb(49, 70, 89)"><path d="M1,1l6.2,6L13,1"></path></svg>
+                                </a>
+                                <ul class="esa-sub-navs"><li><a class="menu" href="https://www.google.com/">谷歌</a></li><li><a class="menu" href="https://www.baidu.com/">百度</a></li><li><a class="menu" href="https://www.cnblogs.com/saoqiang/p/12453738.html">技术合集</a></li></ul>
+                            <i></i></li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+<i></i></li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E5%BD%AD%E5%BF%97%E5%BC%BA">
+联系</a><i></i></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/saoqiang/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--><i></i></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+<i></i></li>
+</ul>
+
+
+		<div class="blogStats">
+			
+			<span id="stats_post_count">随笔 - 
+202&nbsp; </span>
+<span id="stats_article_count">文章 - 
+0&nbsp; </span>
+<span id="stats-comment_count">评论 - 
+0</span>
+
+			
+		</div><!--end: blogStats -->
+	
+                <svg t="1573264861612" class="icon esa-search-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7386" width="32" height="32" data-spm-anchor-id="a313x.7781069.0.i8">
+                    <path fill="rgb(49, 70, 89)" d="M616.362667 580.608h-23.808l-8.533334-8.128a196.16 196.16 0 1 0-21.098666 21.098667l8.128 8.533333v23.808l150.805333 150.165333 44.8-44.8z m-180.8 0a135.594667 135.594667 0 1 1 135.594666-135.594667 135.402667 135.402667 0 0 1-135.573333 135.594667z" p-id="7387"></path>
+                </svg>
+                <svg t="1573265135257" class="icon esa-search-close" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15367" width="32" height="32">
+                    <path fill="rgb(49, 70, 89)" d="M515.23600182 491.06853843L378.27564815 354.10818478a17.09155825 17.09155825 0 1 0-24.17885764 24.15606913l136.96035332 136.97174792-136.96035331 136.97174789a17.09155825 17.09155825 0 1 0 24.16746339 24.16746337l136.97174791-136.96035366 136.9717479 136.96035366a17.09155825 17.09155825 0 1 0 24.16746337-24.15606912l-136.96035366-136.98314215 136.96035366-136.96035367a17.09155825 17.09155825 0 1 0-24.16746337-24.16746337l-136.96035366 136.96035364z" p-id="15368"></path>
+                </svg></div><!--end: navigator 博客导航栏 -->
+
+                <div class="esa-search-box">
+                    <div class="div_my_zzk">
+                        <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" placeholder="Type to Search">&nbsp;<input onclick="zzk_go()" type="button" value="搜 索" id="btnZzk" class="btn_my_zzk">
+                    </div>
+                </div></div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/saoqiang/p/12453738.html">
+    <span>python 面向对象练习</span>
+    
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                
+<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+    <p></p><div class="toc"><div class="toc-container-header">目录</div><ul><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E7%BB%84%E6%88%90%E6%88%90%E5%91%98">面向对象的结构与组成成员</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95%E4%B8%8E%E8%B0%83%E7%94%A8">面向对象的方法与调用</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84self%E6%98%AF%E4%BB%80%E4%B9%88">面向对象中的self是什么</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E5%85%88%E6%9C%89%E5%AF%B9%E8%B1%A1%E8%BF%98%E6%98%AF%E5%85%88%E6%9C%89%E7%B1%BB%EF%BC%9F">先有对象还是先有类？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BB%84%E5%90%88%E5%92%8C%E4%BE%9D%E8%B5%96">面向对象组合和依赖</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7-5%E5%A4%A7%E5%8E%9F%E5%88%99">面向对象的三大特性 5大原则</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#__init__-%E4%B8%8E-__new__">__init__ 与 __new__</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BB%A7%E6%89%BF">面向对象继承</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E5%9C%A8%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80%E4%B8%AD-%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3--%E4%B8%8D%E5%8F%AF%E4%BB%A5%E7%BB%A7%E6%89%BF%E5%A4%9A%E4%B8%AA%E7%B1%BB">在其他语言中 可以实现多个接口 / 不可以继承多个类</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95">抽象类和抽象方法</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E5%A4%9A%E6%80%81%E5%92%8C%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B">多态和鸭子类型</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E7%B1%BB%E7%9A%84%E7%BA%A6%E6%9D%9F">类的约束</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E8%AF%B7%E7%94%A8%E7%B1%BB%E4%BB%A3%E7%A0%81%E7%AE%80%E7%AD%94%E5%AE%9E%E7%8E%B0stack-%E6%A0%88">请用类代码简答实现stack 栈</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E8%A7%A3">谈谈你对面向对象的理解</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9">Python面向对象中的继承有什么特点</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">面向对象深度优先和广度优先是什么？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%ADsuper%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F">面向对象中super的作用？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E5%88%97%E4%B8%BE%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD%E5%B8%A6%E5%8F%8C%E4%B8%8B%E5%88%92%E7%BA%BF%E7%9A%84%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95%EF%BC%8C%E5%A6%82%EF%BC%9Anew%E3%80%81init">列举面向对象中带双下划线的特殊方法，如：new、init</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%87%BD%E6%95%B0%E8%BF%98%E6%98%AF%E6%96%B9%E6%B3%95%EF%BC%9F">如何判断是函数还是方法？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E7%B1%BB%E6%96%B9%E6%B3%95%E5%8C%BA%E5%88%AB%EF%BC%9F">静态方法和类方法区别？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E5%88%97%E4%B8%BE%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E6%88%90%E5%91%98%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">列举面向对象中的特殊成员以及应用场景</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84%EF%BC%9F%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F">什么是反射？以及应用场景？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#metaclass%E4%BD%9C%E7%94%A8%EF%BC%9F%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F">metaclass作用？以及应用场景？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E7%94%A8%E5%B0%BD%E9%87%8F%E5%A4%9A%E7%9A%84%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E3%80%82">用尽量多的方法实现单例模式。</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84mro">什么是面向对象的mro</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#isinstance%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F">isinstance作用以及应用场景？</a></li><li><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%AD%E8%A8%80%EF%BC%9F%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F">什么是断言？应用场景？</a></li></ul></div><p></p>
+<h3 id="2053317945">面向对象的结构与组成成员<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2053317945" class="esa-anchor">#</a></h3>
+<p>类有两种属性：数据属性（静态等）和函数属性（方法 等）</p>
+<p><strong>成员有以下：</strong><br>
+1、字段： 静态字段 普通字段<br>
+2、方法： 静态方法 类方法 普通方法<br>
+3、特性/属性 普通特性</p>
+<p><strong>成员修饰符</strong> 修饰成员<br>
+公有的：没有限制<br>
+私有的：以__开头 仅仅内部可以访问，不能被继承，仅自己可访问。私有的成员可通过公有的成员间接访问</p>
+<p>何时用类调用，何时用对象调用？<br>
+类调用： 无self<br>
+对象调用：self</p>
+<p><strong>结论</strong>：</p>
+<p>1、静态字段和静态方法和类方法通过类来访问，普通字段和方法通过对象来访问<br>
+2、静态方法，使用@staticmethod来装饰<br>
+3、类方法，使用@classmethod来装饰<br>
+4、属性（特性），使用@property来装饰，定义的时候类似普通方法一样，但调用的时候像普通字段一样<br>
+5、属性的getter和setter，通过@property来装饰的方法return来getter，之后通过@方法名.setter装饰的方法来setter</p>
+<p><strong>一些特殊的成员</strong>：</p>
+<p><strong>init</strong> 构造方法，创建对象时调用<br>
+<strong>del</strong> 析构方法，销毁对象时调用<br>
+<strong>call</strong> 对象() 调用<br>
+<strong>getitem</strong> 对象[] 来调用<br>
+<strong>setitem</strong> 对象[] = xxx 来调用<br>
+<strong>delitem</strong> del 对象[] 来调用<br>
+<strong>dict</strong> 列出所有的成员 用途：在表单对象中获取表单所有的字段<br>
+参考字典对象dict<br>
+<strong>str</strong> 类似java中的toString方法，直接打印对象输出的就是该方法的返回值</p>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_0">Copy</div><code class="language-python hljs" id="copy_target_0"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span>
+    company_name = <span class="hljs-string">'mcsq'</span>  <span class="hljs-comment"># 静态变量(静态字段)</span>
+    __iphone = <span class="hljs-string">'1353333xxxx'</span>  <span class="hljs-comment"># 私有静态变量(私有静态字段)</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,name,age)</span>:</span> <span class="hljs-comment">#特殊方法</span>
+        self.name = name  <span class="hljs-comment">#对象属性(普通字段)</span>
+        self.__age = age  <span class="hljs-comment"># 私有对象属性(私有普通字段)</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func1</span><span class="hljs-params">(self)</span>:</span>  <span class="hljs-comment"># 普通方法</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__func</span><span class="hljs-params">(self)</span>:</span> <span class="hljs-comment">#私有方法</span>
+        print(<span class="hljs-number">666</span>)
+<span class="hljs-meta">    @classmethod  # 类方法</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">class_func</span><span class="hljs-params">(cls)</span>:</span>
+        <span class="hljs-string">""" 定义类方法，至少有一个cls参数 """</span>
+        print(<span class="hljs-string">'类方法'</span>)
+<span class="hljs-meta">    @staticmethod  #静态方法</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">static_func</span><span class="hljs-params">()</span>:</span>
+        <span class="hljs-string">""" 定义静态方法 ，无默认参数"""</span>
+        print(<span class="hljs-string">'静态方法'</span>)
+<span class="hljs-meta">    @property  # 属性</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prop</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+obj = A()
+obj.a_func(<span class="hljs-number">777</span>)  <span class="hljs-comment"># 对象也可以调用类方法,但是会自动将其从属于的类名传给cls</span>
+</code></pre>
+<p>类的私有成员</p>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_1">Copy</div><code class="hljs shell" id="copy_target_1"><span class="hljs-meta">#</span><span class="bash"> 类中的私有成员: 私有类的静态属性, 私有对象属性,私有方法</span>
+<span class="hljs-meta">#</span><span class="bash"> 对于类的公有静态属性,类的外部,类的内部,派生类都可以访问.</span>
+<span class="hljs-meta">#</span><span class="bash"> 私有静态属性: 类外部不能访问,类内部可以访问 ,派生类不可访问</span>
+<span class="hljs-meta">#</span><span class="bash"> 对象的私有属性<span class="hljs-comment"># 类的内部可以使用 ,类的外部不能访问 ,派生类中也不可访问</span></span>
+<span class="hljs-meta">
+#</span><span class="bash"> 如果想设定一些私有的或者是不想让类外面用到,密码,加密方式,等设置成私有成员.</span>
+<span class="hljs-meta">#</span><span class="bash"> 拓展: 私有成员除了在类内部,当真访问不到么?</span>
+<span class="hljs-meta">#</span><span class="bash"> python中所有的私有成员: 就是在私有成员前面加上 _类名而已.</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">print</span>(A._A__girlnum)  <span class="hljs-comment"># 千万不要这么去访问!!!</span></span>
+</code></pre>
+<p>类方法与静态方法</p>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_2">Copy</div><code class="hljs shell" id="copy_target_2"><span class="hljs-meta">#</span><span class="bash"> 类方法</span>
+<span class="hljs-meta">#</span><span class="bash"> @classmethod  <span class="hljs-comment"># 类方法: 由类名直接调用的方法,他会自动的将类名传给cls</span></span>
+<span class="hljs-meta">#</span><span class="bash"> 对象也可以调用类方法,但是会自动将其从属于的类名传给cls</span>
+<span class="hljs-meta">#</span><span class="bash">  @staticmethod  静态方法: 不依赖于类,也不依赖于对象,他就是一个普通的函数放置于类中是结构更加清晰与合理.</span>
+</code></pre>
+<p>属性</p>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_3">Copy</div><code class="hljs shell" id="copy_target_3"><span class="hljs-meta">#</span><span class="bash"> 我们要让类方法伪装成属性,虽然在代码级别没有提升,但是看起来更合理.</span>
+<span class="hljs-meta">#</span><span class="bash"> @property</span>
+<span class="hljs-meta">#</span><span class="bash"> def aaa(self):</span>
+<span class="hljs-meta">#</span><span class="bash">     <span class="hljs-built_in">print</span>(<span class="hljs-string">'get的时候运行我啊'</span>)</span>
+<span class="hljs-meta">#</span><span class="bash"> @aaa.setter</span>
+<span class="hljs-meta">#</span><span class="bash"> def aaa(self,v):</span>
+<span class="hljs-meta">#</span><span class="bash">     <span class="hljs-built_in">print</span>(<span class="hljs-string">'修改的时候执行我'</span>)</span>
+<span class="hljs-meta">#</span><span class="bash"> @aaa.deleter</span>
+<span class="hljs-meta">#</span><span class="bash"> def aaa(self):</span>
+<span class="hljs-meta">#</span><span class="bash">     <span class="hljs-built_in">print</span>(<span class="hljs-string">'删除的时候执行我'</span>)</span>
+</code></pre>
+<p>isinstance issubclass</p>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_4">Copy</div><code class="hljs shell" id="copy_target_4"><span class="hljs-meta">#</span><span class="bash"> isinstance(obj,N): 判断 obj对象 是由N类(N的派生类)实例化的对象 返回 True.</span>
+<span class="hljs-meta">#</span><span class="bash"> issubclass(M,N) 判断是M类是N类的子孙.</span>
+<span class="hljs-meta">
+#</span><span class="bash"> <span class="hljs-built_in">type</span> 到底是什么?</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">type</span> 元类 python中一切皆对象 , 一个类也是一个对象.</span>
+<span class="hljs-meta">#</span><span class="bash"> 么这个(类)对象肯定是由类实例化出来的.</span>
+<span class="hljs-meta">#</span><span class="bash"> python中你创建的所有类,以及大部分list str等等这些类,都是从<span class="hljs-built_in">type</span>元类实例化得来的.</span>
+<span class="hljs-meta">#</span><span class="bash"> python中继承object类都是新式类.</span>
+<span class="hljs-meta">#</span><span class="bash"> object 也是由<span class="hljs-built_in">type</span>元类实例化得来的.</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">type</span></span>
+</code></pre>
+<p>函数vs 方法</p>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_5">Copy</div><code class="hljs shell" id="copy_target_5"><span class="hljs-meta">#</span><span class="bash"> 1 通过函数名可以大致判断</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">print</span>(func)  <span class="hljs-comment"># &lt;function func at 0x00000000005D1EA0&gt; 函数</span></span>
+<span class="hljs-meta">#</span><span class="bash"> obj = A()</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">print</span>(obj.func)  <span class="hljs-comment"># &lt;bound method A.func of &lt;__main__.A object at 0x0000000001DE1CF8&gt;&gt; 方法</span></span>
+<span class="hljs-meta">
+#</span><span class="bash"> 2. 通过types模块去验证</span>
+<span class="hljs-meta">#</span><span class="bash"> from types import FunctionType <span class="hljs-comment">#返回bool True就是函数</span></span>
+from types import MethodType
+<span class="hljs-meta">#</span><span class="bash"> 类名调用func 就是一个函数</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">print</span>(isinstance(A.func, FunctionType)) <span class="hljs-comment">#True   函数</span></span>
+<span class="hljs-meta">#</span><span class="bash"> 对象调用func 就是一个方法</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">print</span>(isinstance(obj.func, FunctionType))</span>
+<span class="hljs-meta">#</span><span class="bash"> 对于静态方法的研究</span>
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">print</span>(isinstance(A.f, FunctionType))</span>
+<span class="hljs-meta">
+#</span><span class="bash"> 结论</span>
+<span class="hljs-meta">#</span><span class="bash"> 1. 类⽅法.不论任何情况,都是⽅法.</span>
+<span class="hljs-meta">#</span><span class="bash"> 2. 静态方法,不论任何情况.都是函数</span>
+<span class="hljs-meta">#</span><span class="bash"> 3. 实例方法,如果是实例访问.就是⽅法.如果是类名访问就是函数.</span>
+<span class="hljs-meta">#</span><span class="bash"> 函数与方法</span>
+<span class="hljs-meta">#</span><span class="bash"> 函数: 全都是显性传参</span>
+<span class="hljs-meta">#</span><span class="bash"> 方法: 存在隐性传参</span>
+</code></pre>
+<h3 id="2727822857">面向对象的方法与调用<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2727822857" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_6">Copy</div><code class="language-python hljs" id="copy_target_6"><span class="hljs-number">1.</span>类名调用类中的属性和方法
+注意 类名调用了方法必须穿参 不然报错 类名可以对类中的属性 方法增删改查
+<span class="hljs-number">2.</span>对象调用对象的属性和方法
+对象可以操作对象空间的属性 万能的点 进行增删改查
+</code></pre>
+<h3 id="1054927160">面向对象中的self是什么<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#1054927160" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_7">Copy</div><code class="language-python hljs" id="copy_target_7">什么是self?
+<span class="hljs-number">1.</span>self 就是类中方法的第一个位置参数, 约定俗称: 类中的方法第一个参数一般都设置成self
+<span class="hljs-number">2.</span>如果通过对象执行此方法,解释器就自动的将此对象空间当做实参传给
+<span class="hljs-number">3.</span>谁调用他 他就是谁
+</code></pre>
+<h3 id="2234848158">先有对象还是先有类？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2234848158" class="esa-anchor">#</a></h3>
+<ul>
+<li>在现实生活中：肯定是先有对象再有类，对象是具体的某个事物，真实存在的，而类是抽象的。仅仅是一个概念。比如，我们可以叫一个人的姓名就知道这个人是谁，而无法叫一个人类来代表某个人。</li>
+<li>在程序世界中：相反，我们必须先定义类，再实例化对象。比如：女娲造人这个神话故事，有一个泥娃娃模型(类)之后，可以造无数个人(对象)</li>
+</ul>
+<h3 id="2617302331">面向对象组合和依赖<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2617302331" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_8">Copy</div><code class="language-python hljs" id="copy_target_8"><span class="hljs-number">1.</span> 依赖关系(主从关系)
+    依赖关系: 将一个类的类名或者对象传给另一个类的方法中.
+<span class="hljs-number">2.</span> 组合关系(关联组合聚合)
+    组合: 将一个类的对象封装成另一个类的对象的属性.
+<span class="hljs-number">3.</span> 继承关系
+    单继承 多继承
+    
+好处 使类与类产出了关系
+</code></pre>
+<h3 id="4021930703">面向对象的三大特性 5大原则<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#4021930703" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_9">Copy</div><code class="language-python hljs" id="copy_target_9">面向对象的三大特性是<span class="hljs-string">"封装、"</span>多态<span class="hljs-string">"、"</span>继承<span class="hljs-string">"，五大原则是"</span>单一职责原则<span class="hljs-string">"、"</span>开放封闭原则<span class="hljs-string">"、"</span>里氏替换原则<span class="hljs-string">"、"</span>依赖倒置原则<span class="hljs-string">"、"</span>接口分离原则<span class="hljs-string">"。
+
+封装:
+    把很多数据封装到⼀个对象中. 把固定功能的代码封装到⼀个代码块, 函数, 对象, 打包成模块.这都属于封装的思想. 具体的情况具体分析. 比如. 你写了⼀个很⽜B的函数. 那这个也可以被称为封装. 在⾯向对象思想中. 是把⼀些看似⽆关紧要的内容组合到⼀起统⼀进⾏存储和使⽤. 这就是封装.
+继承:
+	⼦类可以⾃动拥有⽗类中除了私有属性外的其他所有内容
+多态:
+    python中 定义变量不用规定变量的类型.
+    
+鸭子类型(面试会问到)
+    A,B两个类,没有任何关系,独立两个,但是里面的功能相似,所以python一般会将类似于A,B两个类里面的相似的功能让其命名相同.
+    A,B虽然无关系,但是很默契的制定了一个规范.让你使用起来更方便.
+</span></code></pre>
+<p><a href="https://www.cnblogs.com/corvoh/p/5747856.html">https://www.cnblogs.com/corvoh/p/5747856.html</a></p>
+<h3 id="237314009"><code>__init__ 与 __new</code>__<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#237314009" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_10">Copy</div><code class="language-python hljs" id="copy_target_10"><span class="hljs-number">1.</span>__init__ 实列方法  通常用于初始化一个新实例，控制这个初始化的过程，比如添加一些属性， 做一些额外的操作，发生在类实例被创建完以后。它是实例级别的方法。
+<span class="hljs-number">2.</span>__new__ 构造方法通常用于控制生成一个新实例的过程。它是类级别的方法。
+</code></pre>
+<h3 id="2118229111">面向对象继承<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2118229111" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_11">Copy</div><code class="language-python hljs" id="copy_target_11">什么是继承?
+    专业角度: B 继承 A类, B就叫做A的子类,派生类,
+    A叫做B的父类,基类,超类.
+    B类以及B类的对象使用A类的所有的属性以及方法.
+    字面意思: 继承就是继承父母所有的资产.  指向而已  自己空间并没有
+继承的优点
+    节省代码.
+    增强的耦合性.
+    代码规范化.
+单继承
+    <span class="hljs-number">1.</span>子类对象执行父类的一切.
+    <span class="hljs-number">2.</span>实例化对象一定一定会执行三件事. 一定会执行__init__
+    <span class="hljs-number">3.</span>注意: 子类以及子类对象只能调用父类的属性以及方法,不能操作(增删改).
+    <span class="hljs-number">4.</span>子类将父类的方法覆盖了,(重写父类的方法) 调用就不找父类 类指针
+多继承
+     ⼀个叫经典类. 在python2<span class="hljs-number">.2</span>之前. ⼀直使⽤的是经典类. 经典类在基类的根如果什么都不写.
+      ⼀个叫新式类. 在python2<span class="hljs-number">.2</span>之后出现了新式类. 新式类的特点是基类的根是object类。
+        在经典类中采⽤的是深度优先，遍历方案. 什么是深度优先. 就是⼀条路走到头. 然后再回来. 继续找下⼀个.
+        新式类的多继承一般我们用 mro方法就行
+</code></pre>
+<h3 id="2164175646">在其他语言中 可以实现多个接口 / 不可以继承多个类<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2164175646" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_12">Copy</div><code class="language-python hljs" id="copy_target_12"><span class="hljs-comment"># Java</span>
+interface IBase:
+	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f1</span><span class="hljs-params">(sef)</span>
+	
+<span class="hljs-title">interface</span> <span class="hljs-title">INewBase</span>:</span>
+	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f2</span><span class="hljs-params">(sef)</span>
+	
+	
+<span class="hljs-title">class</span> <span class="hljs-title">Foo</span><span class="hljs-params">(IBase,INewBase)</span>:</span>
+	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f1</span><span class="hljs-params">(self)</span>:</span>
+    	<span class="hljs-keyword">pass</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f2</span><span class="hljs-params">(self)</span>:</span>
+    	<span class="hljs-keyword">pass</span> 
+
+
+</code></pre>
+<h3 id="934679511">抽象类和抽象方法<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#934679511" class="esa-anchor">#</a></h3>
+<ul>
+<li>与Java一样。python也有抽象类的概念，但是需要借助模块实现</li>
+<li>抽象类是一个特殊的类，只能被继承，不能被实例化</li>
+<li>抽象类就是从多个类中抽取相同属性和方法。</li>
+<li>用来规范子类。子类必须要有抽象类当中的方法</li>
+</ul>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_13">Copy</div><code class="language-python hljs" id="copy_target_13"><span class="hljs-comment">#java</span>
+abstrac <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span><span class="hljs-params">(object)</span>:</span> <span class="hljs-comment"># 抽象类</span>
+	
+	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f1</span><span class="hljs-params">(self)</span>:</span> <span class="hljs-comment"># 普通方法</span>
+		print(<span class="hljs-number">123</span>)
+		
+	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">abstract</span> <span class="hljs-title">f2</span><span class="hljs-params">(self)</span>:</span> <span class="hljs-comment"># 抽象方法，内部不能写任何代码</span>
+		<span class="hljs-keyword">pass</span> 
+	
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span><span class="hljs-params">(Base)</span>:</span>
+	
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f2</span><span class="hljs-params">(sef)</span>:</span>
+    	print(<span class="hljs-number">123</span>)
+    	
+obj = Foo()
+obj.f2()
+obj.f1()
+
+python中
+<span class="hljs-comment"># 抽象类 规范子类 只能有抽象方法  只能被继承，不能实例化</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span><span class="hljs-params">(metaclass=abc.ABCMeta)</span>:</span>
+<span class="hljs-meta">    @abc.abstractmethod  # 定义抽象方法，无需实现功能</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">"""
+        子类必须定义run()方法
+        """</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-meta">    @abc.abstractmethod  # 定义抽象方法，无需实现功能</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">"""
+        子类必须定义eat()方法
+        """</span>
+        <span class="hljs-keyword">pass</span>
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'在走'</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'人吃饭'</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pig</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'在跑'</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'猪吃草'</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'在跳'</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'小狗吃肉'</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+
+person1 = Person()
+pig1 = Pig()
+dog1 = Dog()
+
+person1.run()
+pig1.run()
+dog1.run()
+</code></pre>
+<h3 id="1072950930">多态和鸭子类型<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#1072950930" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_14">Copy</div><code class="language-python hljs" id="copy_target_14"><span class="hljs-keyword">import</span> abc
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span><span class="hljs-params">(metaclass=abc.ABCMeta)</span>:</span>
+<span class="hljs-meta">    @abc.abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-meta">    @abc.abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'在走'</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'人吃饭'</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pig</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'在跑'</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'猪吃草'</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'在跳'</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'小狗吃肉'</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span><span class="hljs-params">(Animal)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Phone</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'我是手机对象，吃不得'</span>)
+
+person1 = Person()
+pig1 = Pig()
+dog1 = Dog()
+p = Phone()
+
+<span class="hljs-comment"># 统一的接口</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">(animal)</span>:</span>
+    animal.eat()
+
+
+func(person1)
+func(pig1)
+func(dog1)
+func(p)
+<span class="hljs-string">'''
+人吃饭
+猪吃草
+小狗吃肉
+我是手机对象，吃不得
+'''</span>
+
+对于animal来说。它是func的一个参数，而却代表着多种形态，动物。人。猫。狗。手机。
+为什么要使用多态性？
+增加量程序的灵活性。以不变应万变，不论对象千变万变，使用者都是通过接口func(animal)去调用
+增加量程序的可扩展性。新建的类Phone。只要他下面有eat方法，使用者可以完全不修改自己的代码，和动物类一样调用eat()方法。
+
+
+鸭子类型
+如果看起来像鸭子，走起来像鸭子，叫起来像鸭子，那它就是鸭子。
+序列类型有多种形态：字符串，列表，元组，但他们直接没有直接的继承关系
+<span class="hljs-comment"># 序列类型：列表list  元祖tuple  字符串str都可以用len()</span>
+</code></pre>
+<h3 id="3262408069">类的约束<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#3262408069" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_15">Copy</div><code class="language-python hljs" id="copy_target_15"><span class="hljs-comment"># 第二种: 固定写法</span>
+<span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABCMeta,abstractmethod
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Payment</span><span class="hljs-params">(metaclass=ABCMeta)</span>:</span>
+            <span class="hljs-comment"># 抽象类 接口类  规范和约束  metaclass指定的是一个元类</span>
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pay</span><span class="hljs-params">(self, money)</span>:</span>
+        <span class="hljs-keyword">pass</span>  <span class="hljs-comment"># 抽象方法</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wechatpay</span><span class="hljs-params">(Payment)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fuqian</span><span class="hljs-params">(self,money)</span>:</span>
+        print(<span class="hljs-string">f'利用微信支付了<span class="hljs-subst">{money}</span>'</span>)
+    <span class="hljs-comment"># def pay(self,money):</span>
+    <span class="hljs-comment">#     pass</span>
+obj3 = Wechatpay()
+<span class="hljs-comment"># 利用抽象类的概念: 基类如上设置,子类如果没有定义pay方法,在实例化对象时就会报错.</span>
+</code></pre>
+<h3 id="1820178658">请用类代码简答实现stack 栈<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#1820178658" class="esa-anchor">#</a></h3>
+<ul>
+<li>Stack() 创建一个新的空栈</li>
+<li>push(item) 添加一个新的元素item到栈顶</li>
+<li>pop() 弹出栈顶元素</li>
+<li>peek() 返回栈顶元素</li>
+<li>is_empty() 判断栈是否为空</li>
+<li>size() 返回栈的元素个数</li>
+</ul>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_16">Copy</div><code class="hljs objectivec" id="copy_target_16"><span class="hljs-meta"># 实现一个栈stack,后进先出</span>
+
+<span class="hljs-string">'''</span>
+<span class="hljs-keyword">class</span> Stack:
+    def __init__(<span class="hljs-keyword">self</span>):
+        <span class="hljs-keyword">self</span>.items = []
+
+    def is_empty(<span class="hljs-keyword">self</span>):
+        <span class="hljs-meta"># 判断是否为空</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.items == []
+
+    def push(<span class="hljs-keyword">self</span>,item):
+        <span class="hljs-meta"># 加入元素</span>
+        <span class="hljs-keyword">self</span>.items.append(item)
+
+    def pop(<span class="hljs-keyword">self</span>):
+        <span class="hljs-meta"># 弹出元素</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.items.pop()
+
+    def peek(<span class="hljs-keyword">self</span>):
+        <span class="hljs-meta"># 返回栈顶元素</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.items[len(<span class="hljs-keyword">self</span>.items)<span class="hljs-number">-1</span>]
+
+    def size(<span class="hljs-keyword">self</span>):
+        <span class="hljs-meta"># 返回栈的大小</span>
+        <span class="hljs-keyword">return</span> len(<span class="hljs-keyword">self</span>.items)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    stack = Stack()
+    stack.push(<span class="hljs-string">"H"</span>)
+    stack.push(<span class="hljs-string">"E"</span>)
+    stack.push(<span class="hljs-string">"L"</span>)
+    print(stack.size())  <span class="hljs-meta"># 3</span>
+    print(stack.peek())  <span class="hljs-meta"># L </span>
+    print(stack.pop())   <span class="hljs-meta"># L</span>
+    print(stack.pop())   <span class="hljs-meta"># E</span>
+    print(stack.pop())   <span class="hljs-meta"># H</span>
+<span class="hljs-string">'''</span>
+
+</code></pre>
+<h3 id="3022649997">谈谈你对面向对象的理解<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#3022649997" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_17">Copy</div><code class="language-python hljs" id="copy_target_17">它可以有不同层次的理解：
+从世界观的角度可以认为：面向对象的基本哲学是认为世界是由各种各样具有自己的运动规律和内部状态的对象所组成的；不同对象之间的相互作用和通讯构成了完整的现实世界。因此，人们应当按照现实世界这个本来面貌来理解世界，直接通过对象及其相互关系来反映世界。这样建立起来的系统才能符合现实世界的本来面目。
+从方法学的角度可以认为：面向对象的方法是面向对象的世界观在开发方法中的直接运用。它强调系统的结构应该直接与现实世界的结构相对应，应该围绕现实世界中的对象来构造系统，而不是围绕功能来构造系统。
+
+节省代码 结构更清晰
+
+</code></pre>
+<h3 id="1501756392">Python面向对象中的继承有什么特点<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#1501756392" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_18">Copy</div><code class="hljs python" id="copy_target_18">python 两种类：经典类 新式类
+python3 新式类 —— 都默认继承object <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span><span class="hljs-params">(object)</span>:</span> == <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>:</span>
+python2 经典类和新式类 并存
+        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>:</span>  经典类 —— 继承顺序 个别使用方法
+        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span><span class="hljs-params">(object)</span>:</span>  新式类
+
+继承分为单继承和多继承
+Python是支持多继承的
+如果没有指定基类，python的类会默认继承object类，object是所有python类的基类，它提供了一些常见方法（如__str__）的实现。
+
+<span class="hljs-number">1</span>、对象可以调用自己本类和父类的所有方法和属性， 先调用自己的 自己没有才调父类的。谁（对象）调用方法，方法中的self就指向谁
+
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.func()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'Foo.func'</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Son</span><span class="hljs-params">(Foo)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">'Son.func'</span>)
+
+</code></pre>
+<h3 id="3239717870">面向对象深度优先和广度优先是什么？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#3239717870" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_19">Copy</div><code class="hljs scala" id="copy_target_19"><span class="hljs-type">Python</span>的类可以继承多个类，<span class="hljs-type">Python</span>的类如果继承了多个类，那么其寻找方法的方式有两种
+当类是经典类时，多继承情况下，会按照深度优先方式查找  py3
+当类是新式类时，多继承情况下，会按照广度优先方式查找  py2
+简单点说就是：经典类是纵向查找，新式类是横向查找
+经典类和新式类的区别就是，在声明类的时候，新式类需要加上<span class="hljs-class"><span class="hljs-keyword">object</span><span class="hljs-title">关键字。在python3中默认全是新式类</span></span>
+
+</code></pre>
+<h3 id="454217899">面向对象中super的作用？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#454217899" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_20">Copy</div><code class="hljs ruby" id="copy_target_20">用于子类继承基类的方法
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooParent</span>(<span class="hljs-title">object</span>):</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-keyword">self</span>.parent = <span class="hljs-string">'I\'m the parent.'</span>
+        print(<span class="hljs-string">'Parent'</span>)
+        print(<span class="hljs-string">'1111'</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bar</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, message)</span></span>:
+        print(<span class="hljs-string">"%s from Parent"</span> % message)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooChild</span>(<span class="hljs-title">FooParent</span>):</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-comment"># super(FooChild,self) 首先找到 FooChild 的父类（就是类 FooParent），然后把类B的对象 FooChild 转换为类 FooParent 的对象</span>
+        <span class="hljs-keyword">super</span>(FooChild, <span class="hljs-keyword">self</span>).__init_<span class="hljs-number">_</span>()
+        print(<span class="hljs-string">'Child'</span>)
+
+    <span class="hljs-comment"># def bar(self, message):</span>
+    <span class="hljs-comment">#     # super(FooChild, self).bar(message)</span>
+    <span class="hljs-comment">#     print('Child bar fuction')</span>
+    <span class="hljs-comment">#     print(self.parent)</span>
+
+
+<span class="hljs-keyword">if</span> __name_<span class="hljs-number">_</span> == <span class="hljs-string">'__main__'</span>:
+    fooChild = FooChild()
+    fooChild.bar(<span class="hljs-string">'HelloWorld'</span>)
+
+</code></pre>
+<h3 id="253748706">列举面向对象中带双下划线的特殊方法，如：<strong>new</strong>、<strong>init</strong><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#253748706" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_21">Copy</div><code class="hljs markdown" id="copy_target_21"><span class="hljs-strong">__new__</span>：生成实例
+<span class="hljs-strong">__init__</span>：生成实例的属性
+<span class="hljs-strong">__call__</span>：实例对象加( )会执行def <span class="hljs-strong">__call__</span>:... 方法里边的内容。
+
+<span class="hljs-strong">__del__</span>：析构方法，当对象在内存中被释放时，自动触发执行。如当 del obj 或者应用程序运行完毕时，执行该方法里边的内容。
+
+<span class="hljs-strong">__enter__</span>和<span class="hljs-strong">__exit__</span>：出现with语句,对象的<span class="hljs-strong">__enter__</span>被触发,有返回值则赋值给as声明的变量；with中代码块执行完毕时执行<span class="hljs-strong">__exit__</span>里边的内容。
+
+<span class="hljs-strong">__module__</span>：表示当前操作的对象在那个模块   obj.<span class="hljs-strong">__module__</span>
+<span class="hljs-strong">__class__</span> ：表示当前操作的对象的类是什么     obj.<span class="hljs-strong">__class__</span>
+
+<span class="hljs-strong">__doc__</span>：类的描述信息，该描述信息无法被继承
+
+<span class="hljs-strong">__str__</span>：改变对象的字符串显示 print函数 ---&gt;obj.<span class="hljs-strong">__str__</span>()
+<span class="hljs-strong">__repr__</span>：改变对象的字符串显示 交互式解释器 ---&gt;obj.<span class="hljs-strong">__repr__</span>()
+<span class="hljs-strong">__format__</span>：自定制格式化字符串
+
+<span class="hljs-strong">__slots__</span>:一个类变量 用来限制实例可以添加的属性的数量和类型  
+
+<span class="hljs-strong">__setitem__</span>,<span class="hljs-strong">__getitem,__</span>delitem__:
+
+</code></pre>
+<h3 id="1882467156">如何判断是函数还是方法？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#1882467156" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_22">Copy</div><code class="hljs swift" id="copy_target_22">看他的调用者是谁，如果是类，就需要传入一个参数<span class="hljs-keyword">self</span>的值，这时他就是一个函数，
+
+如果调用者是对象，就不需要给<span class="hljs-keyword">self</span>传入参数值，这时他就是一个方法
+
+<span class="hljs-built_in">print</span>(isinstance(obj.<span class="hljs-keyword">func</span>, <span class="hljs-type">FunctionType</span>))   # <span class="hljs-type">False</span>
+
+<span class="hljs-built_in">print</span>(isinstance(obj.<span class="hljs-keyword">func</span>, <span class="hljs-type">MethodType</span>))    # <span class="hljs-type">True</span>
+
+函数：
+
+　　函数是封装了一些独立的功能，可以直接调用，python内置了许多函数，同时可以自建函数来使用。
+
+方法：
+
+　　方法和函数类似，同样封装了独立的功能，但是方法是需要通过对象来调用的，表示针对这个对象要做的操作，使用时采用点方法。
+
+</code></pre>
+<h3 id="2632245803">静态方法和类方法区别？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2632245803" class="esa-anchor">#</a></h3>
+<p>尽管 classmethod 和 staticmethod 非常相似，但在用法上依然有一些明显的区别。classmethod 必须有一个指向类对象的引用作为第一个参数，而 staticmethod 可以没有任何参数。</p>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_23">Copy</div><code class="hljs python" id="copy_target_23"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Num</span>:</span>
+    <span class="hljs-comment"># 普通方法：能用Num调用而不能用实例化对象调用   </span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">one</span><span class="hljs-params">()</span>:</span>  
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">'1'</span>)
+ 
+    <span class="hljs-comment"># 实例方法：能用实例化对象调用而不能用Num调用</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">two</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">'2'</span>)
+ 
+    <span class="hljs-comment"># 静态方法：能用Num和实例化对象调用</span>
+<span class="hljs-meta">    @staticmethod </span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">three</span><span class="hljs-params">()</span>:</span>  
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">'3'</span>)
+ 
+    <span class="hljs-comment"># 类方法：第一个参数cls长什么样不重要，都是指Num类本身，调用时将Num类作为对象隐式地传入方法   </span>
+<span class="hljs-meta">    @classmethod </span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">go</span><span class="hljs-params">(cls)</span>:</span> 
+        cls.three() 
+ 
+Num.one()          <span class="hljs-comment">#1</span>
+<span class="hljs-comment">#Num.two()         #TypeError: two() missing 1 required positional argument: 'self'</span>
+Num.three()        <span class="hljs-comment">#3</span>
+Num.go()           <span class="hljs-comment">#3</span>
+ 
+i=Num()                
+<span class="hljs-comment">#i.one()           #TypeError: one() takes 0 positional arguments but 1 was given         </span>
+i.two()            <span class="hljs-comment">#2      </span>
+i.three()          <span class="hljs-comment">#3</span>
+i.go()             <span class="hljs-comment">#3 </span>
+
+</code></pre>
+<h3 id="553049691">列举面向对象中的特殊成员以及应用场景<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#553049691" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_24">Copy</div><code class="hljs markdown" id="copy_target_24"><span class="hljs-strong">__call__</span>
+
+<span class="hljs-strong">__new__</span>
+
+<span class="hljs-strong">__init__</span>
+
+<span class="hljs-strong">__doc__</span>
+
+<span class="hljs-strong">__class__</span>
+
+<span class="hljs-strong">__del__</span>
+
+<span class="hljs-strong">__dict__</span>
+
+<span class="hljs-strong">__str__</span>
+
+在falsk源码用到......
+
+</code></pre>
+<h3 id="2732561975">什么是反射？以及应用场景？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2732561975" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_25">Copy</div><code class="language-python hljs" id="copy_target_25">反射的核心本质就是以字符串的形式去导入个模块，利用字符串的形式去执行函数。
+
+Django中的 CBV就是基于反射实现的。
+
+<span class="hljs-number">4</span>个方法
+getattr、hasattr、delattr和setattr较为全面的实现了基于字符串的反射机制
+<span class="hljs-comment"># 总结</span>
+<span class="hljs-comment"># print(hasattr(obj,'name'))#查询 返bool 确认 有没有这个属性</span>
+<span class="hljs-comment"># print(getattr(obj,'name','没有'))#获取 返回 对应属性值  加第3个参数 不会报错</span>
+<span class="hljs-comment"># setattr(obj,'aa','aa')#设置属性第2个参数是键第3个是值   可以覆盖</span>
+<span class="hljs-comment"># delattr(obj,'name')#删除属性</span>
+
+</code></pre>
+<h3 id="2948121753">metaclass作用？以及应用场景？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2948121753" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_26">Copy</div><code class="language-python hljs" id="copy_target_26">不知道
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyType</span><span class="hljs-params">(type)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__call__</span><span class="hljs-params">(self, *args, **kwargs)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'MyType'</span>
+  
+  
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span><span class="hljs-params">(object, metaclass=MyType)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'init'</span>
+  
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__new__</span><span class="hljs-params">(cls, *args, **kwargs)</span>:</span>
+        <span class="hljs-keyword">return</span> cls.__init__(cls)
+  
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__call__</span><span class="hljs-params">(self, *args, **kwargs)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'call'</span>
+  
+  
+obj = Foo()
+print(obj)  <span class="hljs-comment"># MyType</span>
+
+</code></pre>
+<h3 id="1501938581">用尽量多的方法实现单例模式。<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#1501938581" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_27">Copy</div><code class="hljs ruby" id="copy_target_27"><span class="hljs-number">1</span>：使用模块
+Python的模块就是天然的单例模式。
+因为模块在第一次导入时，会生成 .pyc 文件，当第二次导入时，就会直接加载 .pyc 文件，而不会再次执行模块代码。
+因此，我们只需把相关的函数和数据定义在一个模块中，就可以获得一个单例对象了。
+例如：
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">V1</span>(<span class="hljs-title">object</span>):</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>
+        pass
+V1 = V1()
+将上面代码保存在文件test.py,要使用时，直接在其他文件中导入此文件中的对象，这个对象既是单例模式的对象
+
+如：from a import V1
+
+<span class="hljs-number">2</span>：使用装饰器
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Singleton</span><span class="hljs-params">(cls)</span></span>:
+    _instance = {}
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_singleton</span><span class="hljs-params">(*args, **kargs)</span></span>:
+        <span class="hljs-keyword">if</span> cls <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> <span class="hljs-symbol">_instance:</span>
+            _instance[cls] = cls(*args, **kargs)
+        <span class="hljs-keyword">return</span> _instance[cls]
+    <span class="hljs-keyword">return</span> _singleton
+@Singleton
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>(<span class="hljs-title">object</span>):</span>
+    a = <span class="hljs-number">1</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, x=<span class="hljs-number">0</span>)</span></span>:
+        <span class="hljs-keyword">self</span>.x = x
+a1 = A(<span class="hljs-number">2</span>)
+a2 = A(<span class="hljs-number">3</span>)
+
+
+<span class="hljs-number">3</span>：使用类
+
+<span class="hljs-number">4</span>：基于__new_<span class="hljs-number">_</span>方法实现
+当我们实例化一个对象时，是先执行了类的__new_<span class="hljs-number">_</span>方法
+当：（我们没写时，默认调用object.__new_<span class="hljs-number">_</span>），实例化对象；然后再执行类的__init_<span class="hljs-number">_</span>方法，对这个对象进行初始化，所有我们可以基于这个，实现单例模式
+
+</code></pre>
+<h3 id="1924011291">什么是面向对象的mro<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#1924011291" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_28">Copy</div><code class="hljs javascript" id="copy_target_28">mro就是方法解析顺序
+<span class="hljs-keyword">super</span> 继承都用到
+
+</code></pre>
+<h3 id="4188733484">isinstance作用以及应用场景？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#4188733484" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_29">Copy</div><code class="hljs python" id="copy_target_29">isinstance(对象，类)  判断这个对象是不是这个类或者这个类的子类的实例化
+
+<span class="hljs-comment"># # 判断a 属不属于A这个类（可以判断到祖宗类）</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span>
+    <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span><span class="hljs-params">(A)</span>:</span>
+    <span class="hljs-keyword">pass</span>
+a = A()
+b = B()
+print(isinstance(b,A)) <span class="hljs-comment"># ===&gt; True  判断到祖宗类</span>
+
+<span class="hljs-comment"># 任何与object都是True,内部都继承object</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span><span class="hljs-keyword">pass</span>
+a = A()  <span class="hljs-comment"># 实例化</span>
+print(isinstance(a,object))  <span class="hljs-comment">#  True</span>
+
+</code></pre>
+<h3 id="2913655555">什么是断言？应用场景？<a href="https://www.cnblogs.com/saoqiang/p/12453738.html#2913655555" class="esa-anchor">#</a></h3>
+<pre><div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_30">Copy</div><code class="language-python hljs" id="copy_target_30">Python <span class="hljs-keyword">assert</span>（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。
+
+断言可以在条件不满足程序运行的情况下直接返回错误，而不必等待程序运行后出现崩溃的情况，
+
+
+<span class="hljs-comment"># 异常处理总结:</span>
+    <span class="hljs-comment"># 异常处理不能经常使用:异常处理耗费性能.有些错误是需要进行分流使用.代码的可读性变差.</span>
+    <span class="hljs-comment"># 关键节点使用.</span>
+<span class="hljs-comment"># 万能异常 Exception as e: 可以起别名</span>
+<span class="hljs-comment"># 什么时候用万能异常,什么时候用多分支?</span>
+<span class="hljs-comment">#如果你只是想把这个异常处理掉,让程序继续执行. 万能异常.</span>
+<span class="hljs-comment"># 如果出现了异常,你是想根据不同的异常执行不同的逻辑流程,你要采取多分支.</span>
+
+</code></pre>
+
+</div>
+<div id="MySignature" style="display: block;"><div class="esa-post-signature"> 
+                        <p>作者：
+            彭志强
+        </p> 
+                        <p>出处：<a href="https://www.cnblogs.com/saoqiang/p/12453738.html">https://www.cnblogs.com/saoqiang/p/12453738.html</a></p> 
+                        <p>版权：本文采用「<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际</a>」知识共享许可协议进行许可。</p> 
+                        <p></p> 
+                    </div></div>
+<div class="clear"></div>
+<div id="blog_post_info_block"><div id="BlogPostCategory">
+    分类: 
+            <a href="https://www.cnblogs.com/saoqiang/category/1661736.html" target="_blank">python</a></div>
+
+
+    <div id="blog_post_info">
+                <div class="esa-sponsor">
+                    <a class="github" href="https://www.cnblogs.com/saoqiang/p/12453738.html" target="_blank" title="Github"></a>
+                    <div class="text tr3">Sponsor</div>
+                    <ul class="box posa tr3">
+                        <li class="paypal">PayPal</li>
+                        <li class="alipay">AliPay</li>
+                        <li class="wechat">WeChat</li>
+                    </ul>
+                    <div id="QRBox" class="posa left-100">
+                        <div id="MainBox"></div>
+                    </div>
+                </div>
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(12453738,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;1a650749-7441-4d07-f62d-08d6d1bc5bde&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./python 面向对象练习 - 彭志强 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./python 面向对象练习 - 彭志强 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/saoqiang/" target="_blank"><img src="./python 面向对象练习 - 彭志强 - 博客园_files/20190511085236.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/saoqiang/">彭志强</a><br>
+            <a href="https://home.cnblogs.com/u/saoqiang/followees/">关注 - 33</a><br>
+            <a href="https://home.cnblogs.com/u/saoqiang/followers/">粉丝 - 15</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;1a650749-7441-4d07-f62d-08d6d1bc5bde&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(12453738,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(12453738,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/saoqiang/p/12453735.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/saoqiang/p/12453735.html" title="发布于 2020-03-10 09:03">python 模块 练习题</a>
+    <br>
+    <a href="https://www.cnblogs.com/saoqiang/p/12453741.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/saoqiang/p/12453741.html" title="发布于 2020-03-10 09:05">python 网编并发 练习</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2020-03-10 09:04</span>&nbsp;
+<a href="https://www.cnblogs.com/saoqiang/">彭志强</a>&nbsp;
+阅读(<span id="post_view_count">113</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12453738" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(12453738);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="./python 面向对象练习 - 彭志强 - 博客园_files/highlight.min.js.下载"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 514821, cb_blogApp = 'saoqiang', cb_blogUserGuid = '1a650749-7441-4d07-f62d-08d6d1bc5bde';
+    var cb_entryId = 12453738, cb_entryCreatedDate = '2020-03-10 09:04', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+    loadSideColumnAd();
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/saoqiang/p/12453738.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    注册用户登录后才能发表评论，请 
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a>
+     或 
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
+    <a href="https://www.cnblogs.com/">访问</a> 网站首页。
+</div></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-ucancode&#39;)">【推荐】超50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="https://tianchi.aliyun.com/specials/promotion/supercoder" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云 在线编程&#39;)">【推荐】1200件T恤+6万奖金，阿里云编程大赛报名开启</a><br><a href="https://brands.cnblogs.com/huawei" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为专区&#39;)">【推荐】了不起的开发者，挡不住的华为，园子里的品牌专区</a><br><a href="https://developer.aliyun.com/ask/291215?utm_content=g_1000133217" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云开发者社区&#39;)">【推荐】Python优质开源项目盘点</a><br></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="c_ad_block" style="">
+        <div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;" data-google-query-id="CLrvmqDHtOsCFRyIdwodpoAP9w"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none; width: 300px; height: 250px;"></div></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block" style="display: none;">
+        <div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;" data-google-query-id="CLvvmqDHtOsCFRyIdwodpoAP9w"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none; width: 468px; height: 60px;"></div></div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+        deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverT2();
+        deliverC1C2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<div id="sidebar_news" class="newsItem"><!--done-->
+<h3 class="catListTitle">公告</h3>
+
+<div id="blog-news">
+    <script type="text/javascript">window['__document_write_ajax_callbacks__']['4']();</script><script type="text/javascript">window['__document_write_ajax_callbacks__']['5']();</script><script defer="">window['__document_write_ajax_callbacks__']['1']();</script>
+
+<script type="text/javascript">window['__document_write_ajax_callbacks__']['6']();</script><script type="text/javascript">window['__document_write_ajax_callbacks__']['2']();</script>
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/saoqiang/">
+            彭志强
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/saoqiang/" title="入园时间：2019-05-07">
+            1年3个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/saoqiang/followers/">
+            15
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/saoqiang/followees/">
+            33
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;1a650749-7441-4d07-f62d-08d6d1bc5bde&#39;)">+加关注</a></div>
+        <script type="text/javascript">window['__document_write_ajax_callbacks__']['7']();</script><script>window['__document_write_ajax_callbacks__']['3']();</script>
+    </div>
+</div>
+
+</div>
+
+<div id="sidebar_ad"></div>
+			<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2020/07/25&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2020年8月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2020/09/25&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">26</td>
+                            <td class="CalOtherMonthDay" align="center">27</td>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                            <td class="CalOtherMonthDay" align="center">30</td>
+                            <td class="CalOtherMonthDay" align="center">31</td>
+                    <td class="CalWeekendDay" align="center">
+                        1
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            2
+                        </td>
+                            <td class="" align="center">
+                                3
+                            </td>
+                            <td class="" align="center">
+                                4
+                            </td>
+                            <td class="" align="center">
+                                5
+                            </td>
+                            <td class="" align="center">
+                                6
+                            </td>
+                            <td class="" align="center">
+                                7
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            8
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            9
+                        </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="" align="center">
+                                11
+                            </td>
+                            <td class="" align="center">
+                                12
+                            </td>
+                            <td class="" align="center">
+                                13
+                            </td>
+                            <td class="" align="center">
+                                14
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            15
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            16
+                        </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                            <td class="" align="center">
+                                18
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/saoqiang/archive/2020/08/19.html"><u>19</u></a>
+                            </td>
+                            <td class="" align="center">
+                                20
+                            </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            22
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            23
+                        </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="CalTodayDay" align="center">
+                                25
+                            </td>
+                            <td class="" align="center">
+                                26
+                            </td>
+                            <td class="" align="center">
+                                27
+                            </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            29
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            30
+                        </td>
+                            <td class="" align="center">
+                                31
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                2
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                3
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            5
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn">
+<!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block">
+    <div class="catListLink">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/saoqiang/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/saoqiang/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/saoqiang/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/saoqiang/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/saoqiang/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+
+</div>
+
+<!-- 最新随笔 -->
+<div id="sidebar_recentposts" class="sidebar-block">
+    <div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+    <ul>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/13529422.html">1.老男孩Linux云计算工程师</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/13372529.html">2.1</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12907270.html">3.博客园设置简约主题</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12595855.html">4.day25-48</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12584849.html">5.day1-10</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12527593.html">6.drf app</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12527588.html">7.flask 框架 练习</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12495181.html">8.vue入门  显示数据 操作属性 操作样式 条件渲染</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12482871.html">9.flask 配置文件  路由 视图 模板 中间件</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/saoqiang/p/12469927.html">10.flask 使用数据库连接池</a>
+
+                </li>
+    </ul>
+</div>
+
+
+</div>
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block">
+    <div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+
+        <li>
+            <a href="https://www.cnblogs.com/saoqiang/tag/%E5%8D%9A%E5%AE%A2%E5%9B%AD/">博客园</a>(1)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/saoqiang/tag/%E6%B5%8B%E8%AF%95/">测试</a>(1)
+        </li>
+    
+
+</ul>
+</div>
+
+
+</div>
+
+<!-- 积分与排名 -->
+<div id="sidebar_scorerank" class="sidebar-block">
+    <div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	
+18290
+	</li>
+	<li class="liRank">
+		排名 -	
+47756
+	</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+    
+        <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+            <h3 class="catListTitle">
+                
+随笔分类
+
+
+
+            </h3>
+
+
+            <ul>
+
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/category/1661738.html" rel="" target="">
+    go(9)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/category/1661739.html" rel="" target="">
+    java(1)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/category/1661735.html" rel="" target="">
+    liunx(4)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/category/1661736.html" rel="" target="">
+    python(17)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/category/1661737.html" rel="" target="">
+    test(5)
+</a>
+ 
+
+                        </li>
+
+            </ul>
+
+
+        </div>
+        <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+            <h3 class="catListTitle">
+                
+随笔档案
+
+
+
+            </h3>
+
+
+            <ul>
+
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2020/08.html" rel="" target="">
+    2020年8月(1)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2020/07.html" rel="" target="">
+    2020年7月(1)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2020/05.html" rel="" target="">
+    2020年5月(1)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2020/03.html" rel="" target="">
+    2020年3月(100)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2020/02.html" rel="" target="">
+    2020年2月(30)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2020/01.html" rel="" target="">
+    2020年1月(17)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2019/12.html" rel="" target="">
+    2019年12月(6)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2019/11.html" rel="" target="">
+    2019年11月(10)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2019/10.html" rel="" target="">
+    2019年10月(7)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2019/09.html" rel="" target="">
+    2019年9月(7)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2019/08.html" rel="" target="">
+    2019年8月(12)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2019/06.html" rel="" target="">
+    2019年6月(3)
+</a>
+ 
+
+                        </li>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/saoqiang/archive/2019/05.html" rel="" target="">
+    2019年5月(7)
+</a>
+ 
+
+                        </li>
+
+            </ul>
+
+
+        </div>
+
+</div>
+
+<!-- 最新评论 -->
+<div id="sidebar_recentcomments" class="sidebar-block">
+    
+</div>
+
+
+
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block">
+    <div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/saoqiang/p/11478059.html">
+                            1. Python面试题集合带答案(979)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/saoqiang/p/10995206.html">
+                            2. python---入门到略懂(738)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/saoqiang/p/12453733.html">
+                            3. python 函数练习题(479)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/saoqiang/p/11085345.html">
+                            4. 路飞学城(463)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/saoqiang/p/12450106.html">
+                            5. 分布式爬虫(399)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block">
+    
+</div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+    
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/saoqiang/p/12450106.html">
+                                1. 分布式爬虫(1)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright © 2020 彭志强
+<br><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+
+
+	<span class="esa-copyright">&amp; Theme <a href="https://github.com/esofar/cnblogs-theme-silence" target="_blank">Silence v2.0.2</a></span></div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+
+<script type="text/javascript">
+    $.silence({
+        avatar: 'https://img2020.cnblogs.com/blog/1681577/202005/1681577-20200517215513182-1770689626.png',
+        favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
+        navigation: [
+            {
+                title: '标签',
+                url: 'https://www.cnblogs.com/saoqiang/tag/'
+            },
+            {
+                title: '归档',
+                url: 'https://www.cnblogs.com/saoqiang/p/'
+            },
+            {
+                title: '导航',
+                chilren: [
+                    {
+                        title: '谷歌',
+                        url: 'https://www.google.com/',
+                    },
+                    {
+                        title: '百度',
+                        url: 'https://www.baidu.com/',
+                    },
+                   {
+                        title: '技术合集',
+                        url: '',
+                    },
+                ]
+            },
+        ],
+        catalog: {
+            enable: true,
+            move: true,
+            index: true,
+            level1: 'h2',
+            level2: 'h3',
+            level3: 'h4',
+        },
+        signature: {
+            enable: true,
+            license: '署名-非商业性使用-相同方式共享 4.0 国际',
+            link: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+            remark: null
+        },
+        sponsor: {
+            enable: true,
+            paypal: null,
+            wechat: 'https://img2020.cnblogs.com/blog/1681577/202005/1681577-20200517215816291-423338228.png',
+            alipay: 'https://img2020.cnblogs.com/blog/1681577/202005/1681577-20200517215553978-9691533.jpg'
+        },
+        github: {
+            enable: true,
+            link: '',
+	    target: '_self'
+        }
+    });
+</script><a href="https://www.cnblogs.com/saoqiang/p/12453738.html" class="github-corner" title="Fork me on GitHub" target="_self">
+                        <svg width="60" height="60" viewBox="0 0 250 250" style=" color:#fff; z-index: 999; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
+                            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+                            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+                        </svg>
+                    </a><div class="esa-catalog">
+                        <div class="esa-catalog-contents" style="display: block;">
+                            <div class="esa-catalog-title">CONTENTS</div>
+                            <a class="esa-catalog-close">✕</a>
+                        <ul><li class="li_h3" title="面向对象的结构与组成成员">
+                            <i class="2053317945"></i><a class="esa-anchor-link"><span class="level2">0.1. </span>面向对象的结构与组成成员</a>
+                        </li><li class="li_h3" title="面向对象的方法与调用">
+                            <i class="2727822857"></i><a class="esa-anchor-link"><span class="level2">0.2. </span>面向对象的方法与调用</a>
+                        </li><li class="li_h3" title="面向对象中的self是什么">
+                            <i class="1054927160"></i><a class="esa-anchor-link"><span class="level2">0.3. </span>面向对象中的self是什么</a>
+                        </li><li class="li_h3" title="先有对象还是先有类？">
+                            <i class="2234848158"></i><a class="esa-anchor-link"><span class="level2">0.4. </span>先有对象还是先有类？</a>
+                        </li><li class="li_h3" title="面向对象组合和依赖">
+                            <i class="2617302331"></i><a class="esa-anchor-link"><span class="level2">0.5. </span>面向对象组合和依赖</a>
+                        </li><li class="li_h3" title="面向对象的三大特性 5大原则">
+                            <i class="4021930703"></i><a class="esa-anchor-link"><span class="level2">0.6. </span>面向对象的三大特性 5大原则</a>
+                        </li><li class="li_h3" title="__init__ 与 __new__">
+                            <i class="237314009"></i><a class="esa-anchor-link"><span class="level2">0.7. </span>__init__ 与 __new__</a>
+                        </li><li class="li_h3" title="面向对象继承">
+                            <i class="2118229111"></i><a class="esa-anchor-link"><span class="level2">0.8. </span>面向对象继承</a>
+                        </li><li class="li_h3" title="在其他语言中 可以实现多个接口 / 不可以继承多个类">
+                            <i class="2164175646"></i><a class="esa-anchor-link"><span class="level2">0.9. </span>在其他语言中 可以实现多个接口 / 不可以继承多个类</a>
+                        </li><li class="li_h3" title="抽象类和抽象方法">
+                            <i class="934679511"></i><a class="esa-anchor-link"><span class="level2">0.10. </span>抽象类和抽象方法</a>
+                        </li><li class="li_h3" title="多态和鸭子类型">
+                            <i class="1072950930"></i><a class="esa-anchor-link"><span class="level2">0.11. </span>多态和鸭子类型</a>
+                        </li><li class="li_h3" title="类的约束">
+                            <i class="3262408069"></i><a class="esa-anchor-link"><span class="level2">0.12. </span>类的约束</a>
+                        </li><li class="li_h3" title="请用类代码简答实现stack 栈">
+                            <i class="1820178658"></i><a class="esa-anchor-link"><span class="level2">0.13. </span>请用类代码简答实现stack 栈</a>
+                        </li><li class="li_h3" title="谈谈你对面向对象的理解">
+                            <i class="3022649997"></i><a class="esa-anchor-link"><span class="level2">0.14. </span>谈谈你对面向对象的理解</a>
+                        </li><li class="li_h3" title="Python面向对象中的继承有什么特点">
+                            <i class="1501756392"></i><a class="esa-anchor-link"><span class="level2">0.15. </span>Python面向对象中的继承有什么特点</a>
+                        </li><li class="li_h3" title="面向对象深度优先和广度优先是什么？">
+                            <i class="3239717870"></i><a class="esa-anchor-link"><span class="level2">0.16. </span>面向对象深度优先和广度优先是什么？</a>
+                        </li><li class="li_h3" title="面向对象中super的作用？">
+                            <i class="454217899"></i><a class="esa-anchor-link"><span class="level2">0.17. </span>面向对象中super的作用？</a>
+                        </li><li class="li_h3" title="列举面向对象中带双下划线的特殊方法，如：new、init">
+                            <i class="253748706"></i><a class="esa-anchor-link"><span class="level2">0.18. </span>列举面向对象中带双下划线的特殊方法，如：new、init</a>
+                        </li><li class="li_h3" title="如何判断是函数还是方法？">
+                            <i class="1882467156"></i><a class="esa-anchor-link"><span class="level2">0.19. </span>如何判断是函数还是方法？</a>
+                        </li><li class="li_h3" title="静态方法和类方法区别？">
+                            <i class="2632245803"></i><a class="esa-anchor-link"><span class="level2">0.20. </span>静态方法和类方法区别？</a>
+                        </li><li class="li_h3" title="列举面向对象中的特殊成员以及应用场景">
+                            <i class="553049691"></i><a class="esa-anchor-link"><span class="level2">0.21. </span>列举面向对象中的特殊成员以及应用场景</a>
+                        </li><li class="li_h3" title="什么是反射？以及应用场景？">
+                            <i class="2732561975"></i><a class="esa-anchor-link"><span class="level2">0.22. </span>什么是反射？以及应用场景？</a>
+                        </li><li class="li_h3" title="metaclass作用？以及应用场景？">
+                            <i class="2948121753"></i><a class="esa-anchor-link"><span class="level2">0.23. </span>metaclass作用？以及应用场景？</a>
+                        </li><li class="li_h3" title="用尽量多的方法实现单例模式。">
+                            <i class="1501938581"></i><a class="esa-anchor-link"><span class="level2">0.24. </span>用尽量多的方法实现单例模式。</a>
+                        </li><li class="li_h3" title="什么是面向对象的mro">
+                            <i class="1924011291"></i><a class="esa-anchor-link"><span class="level2">0.25. </span>什么是面向对象的mro</a>
+                        </li><li class="li_h3" title="isinstance作用以及应用场景？">
+                            <i class="4188733484"></i><a class="esa-anchor-link"><span class="level2">0.26. </span>isinstance作用以及应用场景？</a>
+                        </li><li class="li_h3" title="什么是断言？应用场景？">
+                            <i class="2913655555"></i><a class="esa-anchor-link"><span class="level2">0.27. </span>什么是断言？应用场景？</a>
+                        </li></ul></div>
+                    </div><div class="esa-toolbar">
+                <button class="esa-toolbar-gotop" data-tips="返回顶部" style="display: block;"></button>
+                <button class="esa-toolbar-contents" data-tips="阅读目录"></button>
+                <button class="esa-toolbar-follow" data-tips="关注博主"></button>
+            </div><script type="text/javascript">getFollowStatus('1a650749-7441-4d07-f62d-08d6d1bc5bde');</script><div id="lightboxOverlay" tabindex="-1" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" tabindex="-1" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt=""><div class="lb-nav"><a class="lb-prev" aria-label="Previous image" href="https://www.cnblogs.com/saoqiang/p/12453738.html"></a><a class="lb-next" aria-label="Next image" href="https://www.cnblogs.com/saoqiang/p/12453738.html"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>
