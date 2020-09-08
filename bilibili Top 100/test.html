@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+   <meta charset="UTF-8">
+   <!-- <script src="static/js/echarts.min.js"></script> -->
+</head>
+
+<body style="height: 100%;margin: 0">
+   <div id="main" style="height: 100%;"></div>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+   <script type="text/javascript"
+      src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+   <script type="text/javascript">
+      var myChart = echarts.init(document.getElementById('main')); // 初始化
+
+      var data = [
+         [
+            [250, 180, 'helloworld', '1990'],
+            [100, 120, 'hello', '1990'],
+            [200, 100, 'sawatika', '1990'],
+            [300, 200, '你好', '1990'],
+         ],
+      ]; // 数据导入
+
+      option = {
+         backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.5, 0.8, [{
+            offset: 0,
+            color: '#f7f8fa'
+         }, {
+            offset: 1,
+            color: '#cdd0d5'
+         }]),
+         title: {
+            text: '1990 与 2015 年各国家人均寿命与 GDP'
+         },
+         legend: {
+            right: 10,
+            data: ['1990']
+         },
+         xAxis: {
+            splitLine: {
+               lineStyle: {
+                  type: 'dashed'
+               }
+            }
+         },
+         yAxis: {
+            splitLine: {
+               lineStyle: {
+                  type: 'dashed'
+               }
+            },
+            scale: true
+         },
+         
+         series: [{
+            name: '1990',
+            data: data[0],
+            type: 'scatter',
+            symbolSize: function (data) {
+               return Math.sqrt(data[1]) / 5e2;
+            },
+            emphasis: {
+               label: {
+                  show: true,
+                  formatter: function (param) {
+                     return param.data[2];
+                  },
+                  position: 'top'
+               }
+            },
+            itemStyle: {
+               shadowBlur: 10,
+               shadowColor: 'rgba(120, 36, 50, 0.5)',
+               shadowOffsetY: 5,
+               color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                  offset: 0,
+                  color: 'rgb(251, 118, 123)'
+               }, {
+                  offset: 1,
+                  color: 'rgb(204, 46, 72)'
+               }])
+            }
+         }]
+      };
+      myChart.setOption(option)
+   </script>
+</body>
+
+</html>
