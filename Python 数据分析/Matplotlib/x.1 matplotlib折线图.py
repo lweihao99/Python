@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+from matplotlib import font_manager
 import random
 
 # 设置图片大小 figure 方法
