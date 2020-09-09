@@ -15,10 +15,10 @@ _y_16 = [i+0.3*2 for i in _y_14]
 
 
 plt.figure(figsize=(16, 8), dpi=100)
-# 设置字体
+# 全局设置字体
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 # 绘制
-height = 0.3
+height = 0.2
 plt.barh(_y_16, b_16, label='2017-09-16', height=height)
 plt.barh(_y_15, b_15, label='2017-09-15', height=height)
 plt.barh(_y_14, b_14, label='2017-09-14', height=height)
