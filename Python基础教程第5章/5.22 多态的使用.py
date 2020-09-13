@@ -24,7 +24,7 @@ class Person:
         self.dog = None
 
     def work_with_dog(self):
-        # 判断如果dog属性不是None和是Dog类实例化出来的
+        # 判断如果dog属性不是None或是Dog类实例化出来的
         if self.dog is not None and isinstance(self.dog, Dog):
             self.dog.work()
 
