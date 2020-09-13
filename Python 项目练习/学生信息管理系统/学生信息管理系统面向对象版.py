@@ -13,3 +13,19 @@ exel数据保存
 
 学生的信息有: 姓名，年龄，成绩，住家地址
 '''
+
+
+class Student(object):
+
+    def __init__(self, name, age, score, address):
+        self.name = name
+        self.age = age
+        self.score = score
+        self.address = address
+
+
+def main():
+    pass
+
+
+main()
