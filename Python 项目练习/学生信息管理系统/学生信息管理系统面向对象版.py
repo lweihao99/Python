@@ -50,20 +50,51 @@ class Student(object):
                 cls.datalist.remove(name)
                 return "{} deleted".format(name['name'])
 
-    def change_info(self):
-        pass
+    @classmethod
+    def change_info(cls):
+        if len(cls.datalist) == 0:
+            return "nothing here"
 
-    def rank_high_low(self):
-        pass
+        check_name = input("eter the name that you want to change:")
+        for item in cls.datalist:
+            if item['name'] == check_name:
+                item['name'] = input("new name:")
+                item['age'] = int(input("new age:"))
+                item['score'] = int(input("new score:"))
+                item['address'] = input('new address:')
+                return "change success"
 
-    def rank_reverse(self):
-        pass
+    @classmethod
+    def rank_high_low(cls):
+        cls.datalist.sort(key=lambda ele: ele['score'], reverse=True)
+        print('\t姓名\t\t\t年龄\t\t\t成绩\t\t\t地址')
+        for item in cls.datalist:
+            print("\t%s\t\t\t%d\t\t\t%d\t\t\t%s" %
+                  (item['name'], item['age'], item['score'], item['address']))
 
-    def student_age_high_low(self):
-        pass
+    @classmethod
+    def rank_reverse(cls):
+        cls.datalist.sort(key=lambda ele: ele['score'], reverse=False)
+        print('\t姓名\t\t\t年龄\t\t\t成绩\t\t\t地址')
+        for item in cls.datalist:
+            print("\t%s\t\t\t%d\t\t\t%d\t\t\t%s" %
+                  (item['name'], item['age'], item['score'], item['address']))
 
-    def student_age_reverse(self):
-        pass
+    @classmethod
+    def student_age_high_low(cls):
+        cls.datalist.sort(key=lambda ele: ele['age'], reverse=True)
+        print('\t姓名\t\t\t年龄\t\t\t成绩\t\t\t地址')
+        for item in cls.datalist:
+            print("\t%s\t\t\t%d\t\t\t%d\t\t\t%s" %
+                  (item['name'], item['age'], item['score'], item['address']))
+
+    @classmethod
+    def student_age_reverse(cls):
+        cls.datalist.sort(key=lambda ele: ele['age'], reverse=False)
+        print('\t姓名\t\t\t年龄\t\t\t成绩\t\t\t地址')
+        for item in cls.datalist:
+            print("\t%s\t\t\t%d\t\t\t%d\t\t\t%s" %
+                  (item['name'], item['age'], item['score'], item['address']))
 
 
 def main():
@@ -91,5 +122,30 @@ def main():
         print(student.del_info())
         main()
 
+    if option == 4:
+        print(student.change_info())
+        main()
 
-main()
+    if option == 5:
+        student.rank_high_low()
+        main()
+
+    if option == 6:
+        student.rank_reverse()
+        main()
+
+    if option == 7:
+        student.student_age_high_low()
+        main()
+
+    if option == 8:
+        student.student_age_reverse()
+        main()
+
+    if option == 0:
+        print('end programm')
+        exit(100)
+
+
+if __name__ == "__main__":
+    main()
