@@ -3,14 +3,14 @@ import numpy as np
 # shape方法,查看数组的形状
 t1 = np.arange(12)
 print(t1)
-print(t1.shape)  # (12,) # 如果元祖里只有一个数,那么shape表示的就是一共有的个数,一维数组
+print(t1.shape(12,))  # (12,) # 如果元祖里只有一个数,那么shape表示的就是一共有的个数,一维数组
 
 t2 = np.array([[1, 2, 3], [4, 5, 6]])
-print(t2.shape)  # (2, 3) # shape 第一个数字表示的是行数,第二个表示列数,二维数组
+print(t2.shape(2, 3))  # (2, 3) # shape 第一个数字表示的是行数,第二个表示列数,二维数组
 
 t3 = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
 print(t3)
-print(t3.shape)  # (2, 2, 3) ==> 三维数字数组
+print(t3.shape(2, 2, 3))  # (2, 2, 3) ==> 三维数字数组
 
 # reshape 修改数组的形状
 t4 = np.arange(12)
