@@ -1,77 +1,78 @@
 # 储存元素名
-names = ["weihao", "jone", "jack"]
-# 索引下标来打印我需要的值
-# 下标从0开始，对应列表里的第一个元素名
-print(names[1])  # 数字是下标,这里是 jone
+# names = ["weihao", "jone", "jack"]
+# # 索引下标来打印我需要的值
+# # 下标从0开始，对应列表里的第一个元素名
+# print(names[1])  # 数字是下标,这里是 jone
 
-# 列表特点
-# 1、可多放多个值
-# 2、按照从左到右的顺序定义列表元素，下标从0开始顺序访问，是有序的
-# 3、可修改指定索引位置对应的值，可变
+# # 列表特点
+# # 1、可多放多个值
+# # 2、按照从左到右的顺序定义列表元素，下标从0开始顺序访问，是有序的
+# # 3、可修改指定索引位置对应的值，可变
 
-# 追加
-enter = input("enter what you want: ")
-name = []
-number_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-name_list = ["weihao", "jax", "kack", "jack", "william"]
-# 追加 enter 输入的值到 name 空列表里
-name.append(enter)
-print(name)
+# # 追加
+# enter = input("enter what you want: ")
+# name = []
+# number_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+# name_list = ["weihao", "jax", "kack", "jack", "william"]
+# # 追加 enter 输入的值到 name 空列表里
 
-# 插入
-name_list.insert(3, enter)
-name_list.insert(4, "god")
+# name.append(enter)
+# print(name)
 
-# 合并
-name_list.extend(number_list)  # 将两个列表合并在一起
-print(name_list)
+# # 插入
+# name_list.insert(3, enter)
+# name_list.insert(4, "god")
 
-# 列表嵌套
-# 插入是在列表里插入一个值，而列表嵌套是在列表里嵌套列表
-name_list.insert(0, [1, 2, 3])
-# 打印出插入到0下标的列表的第二个元素名
-print(name_list[0, 2])  # 打印出 2
+# # 合并
+# name_list.extend(number_list)  # 将两个列表合并在一起
+# print(name_list)
 
-# 删除操作
-# del 删
-del number_list[0]
-print(number_list)  # 这里元素1被删了
+# # 列表嵌套
+# # 插入是在列表里插入一个值，而列表嵌套是在列表里嵌套列表
+# name_list.insert(0, [1, 2, 3])
+# # 打印出插入到0下标的列表的第二个元素名
+# print(name_list[0, 2])  # 打印出 2
 
-# .pop 删
-number_list.pop()  # 默认功能，默认删除最后一个元素，并返回被删除的值
-print(number_list)  # 这里最后一个数字被删了
+# # 删除操作
+# # del 删
+# del number_list[0]
+# print(number_list)  # 这里元素1被删了
 
-number_list.pop(3)  # 删除指定元素,并返回删除值
-# 列表为空的时候会报错
+# # .pop 删
+# number_list.pop()  # 默认功能，默认删除最后一个元素，并返回被删除的值
+# print(number_list)  # 这里最后一个数字被删了
 
-# .remove删除从左到右第一个匹配的元素
-# 如果有多个同样的元素 .remove 会删掉第一个遇到的那个
-# 如果要 .remove 一个不存在的元素将会报错
-name_list.remove("jax")
+# number_list.pop(3)  # 删除指定元素,并返回删除值
+# # 列表为空的时候会报错
 
-# clear 清空
-names.clear()  # 直接清空整个列表
-print(names)
+# # .remove删除从左到右第一个匹配的元素
+# # 如果有多个同样的元素 .remove 会删掉第一个遇到的那个
+# # 如果要 .remove 一个不存在的元素将会报错
+# name_list.remove("jax")
 
-# 修改操作
-games = ["cod", "battlefield", "dota", "csgo"]
-games[0] = "leagueOfLegends"  # 修改第0个元素的值
-games[-1] = "cyberpunk 2077"  # 修改倒数第一个元素的值
+# # clear 清空
+# names.clear()  # 直接清空整个列表
+# print(names)
 
-# 查操作
+# # 修改操作
+# games = ["cod", "battlefield", "dota", "csgo"]
+# games[0] = "leagueOfLegends"  # 修改第0个元素的值
+# games[-1] = "cyberpunk 2077"  # 修改倒数第一个元素的值
 
-# .index 如果查看一个没有的元素就会报错
-# .index 不能查看嵌套在列表里的数据
-# 语法: 变量名.index(value,start,stop), star 就是开始索引，默认为 0, stop 就是结束索引，默认为字符串的长度
-# 返回从左开始匹配到第一个 dota 的索引，就是返回元素的下标
-print(games.index("dota"))  # 返回 2
+# # 查操作
 
-# .count 如果查看没有的元素会返回 0
-# # 返回 dota 的个数
-print(games.count("dota"))  # 返回 1
+# # .index 如果查看一个没有的元素就会报错
+# # .index 不能查看嵌套在列表里的数据
+# # 语法: 变量名.index(value,start,stop), star 就是开始索引，默认为 0, stop 就是结束索引，默认为字符串的长度
+# # 返回从左开始匹配到第一个 dota 的索引，就是返回元素的下标
+# print(games.index("dota"))  # 返回 2
 
-# 判断列表里有没有我要的元素
-print("battlefield" in games)  # 返回 True 就是有 is not 来反转返回值
+# # .count 如果查看没有的元素会返回 0
+# # # 返回 dota 的个数
+# print(games.count("dota"))  # 返回 1
+
+# # 判断列表里有没有我要的元素
+# print("battlefield" in games)  # 返回 True 就是有 is not 来反转返回值
 
 
 # 列表切片
