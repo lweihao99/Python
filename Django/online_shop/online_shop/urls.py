@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import views  # 需要使用.来表示模块在当前目录
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('hello/', views.index_view)
 ]
